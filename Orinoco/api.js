@@ -7,7 +7,6 @@ class CameraApi {
 
     getAll() {
 
-
         fetch(this.apiUrl, {
             method: 'GET',
         })
@@ -15,5 +14,4 @@ class CameraApi {
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
     }
-
 }
