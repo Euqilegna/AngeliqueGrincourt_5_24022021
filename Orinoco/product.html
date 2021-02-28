@@ -10,8 +10,9 @@
         //démarer API : node server.js 
         const api = new CameraApi()
         const loadData = async () => {
-            const productList = await api.getAll()
-            console.log(productList)
+            const productId = localStorage.getItem('productId') //récupère l'id dans le localStorage 
+            const product = await api.getById(idProduct)
+            console.log(product)
         }
         loadData()
     </script>

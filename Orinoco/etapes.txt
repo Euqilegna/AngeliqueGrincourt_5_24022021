@@ -1,0 +1,13 @@
+ETAPE PROJET : 
+
+1. Test API sur Postman
+
+2. Implémenter dans le projet les différents appels de l'API
+
+3. Création des pages du site : 
+    3.1 : Page de vue des produits => liste montrant tous les articles 
+    3.2 : Page produit => les informations détaillés du produit
+    3.3 : Page Panier => Produit(s) ajouté(s) au Panier + Prix Total +formulaire de création de commande 
+    3.4 : Page de remerciement pour la commande
+
+4.
