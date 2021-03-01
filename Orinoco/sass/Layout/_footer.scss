@@ -1,0 +1,67 @@
+.footer {
+    color: black;
+    padding: 40px;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: "Montserrat";
+
+    &--background {
+        background-color: $tertiaryColor;
+    }
+
+    &__containerBox{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+        @include mobile-only{
+            display: block;
+        }
+    }
+
+    &__title{
+        font-size: 30px;
+        font-weight: 400;
+        font-family: "Sofia";
+        
+        &--adress{
+            font-size: 30px ;
+        }
+
+    }
+
+    ul{
+        padding: 0;
+    }
+}
+
+ .rsBox{
+     display: flex;
+  }
+
+.rs--light{
+    font-size: 25px;
+    color: #d4d4d4;
+}
+
+
+.backgroundRs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 47px;
+    margin: 0 5px;
+    border-radius: 50px;
+    background-color: #fbfbfb;
+    box-shadow: 5px 5px 5px #e6e6e6;
+}
+
+#copyright {
+    font-family: "Nunito Sans";
+    background-color: #fbfbfb;
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    padding-top: 10px;
+    color: black;
+}

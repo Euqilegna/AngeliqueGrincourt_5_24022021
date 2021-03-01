@@ -1,11 +1,11 @@
 {
   "name": "angeliquegrincourt_5_24022021",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projet 5 - OpenClassRoom",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --watch Orinoco/sass/style.scss:css/style.css"
+    "sass": "sass --watch ./Orinoco/sass/style.scss:css/style.css"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Euqilegna/AngeliqueGrincourt_5_24022021/issues"
   },
-  "homepage": "https://github.com/Euqilegna/AngeliqueGrincourt_5_24022021#readme"
+  "homepage": "https://github.com/Euqilegna/AngeliqueGrincourt_5_24022021#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "bootstrap": "^5.0.0-beta2"
+  }
 }

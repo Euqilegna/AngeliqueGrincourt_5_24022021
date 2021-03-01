@@ -1,0 +1,15 @@
+ // Gestion d'écran 
+
+$breakpoints: (
+    mobile: 599px,
+    desktop: 2000px,
+    tablette: 768px
+); 
+
+//Colors
+$primaryColor : #d4813a ; 
+$secondaryColor : #8f5bfe ;
+$tertiaryColor : #f3e9f1; 
+
+
+$linear-gradiant: linear-gradient(to left top, $primaryColor, $secondaryColor);

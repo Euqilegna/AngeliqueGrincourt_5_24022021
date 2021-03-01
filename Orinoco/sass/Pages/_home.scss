@@ -1,0 +1,55 @@
+header {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__title {
+        font-family: "Sofia";
+        font-size: 30px;
+        @include mobile-only {
+            text-align: center;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        right: 10%;
+        i {
+            margin: 0 5px;
+            font-size: 18px;
+            background: -webkit-linear-gradient($primaryColor, $secondaryColor);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 50px;
+    margin: auto;
+
+    &__card {
+        width: 400px;
+        height: 400px;
+        background-color: #e6e6e6;
+        border-radius: 20px;
+        margin: 30px;
+    }
+
+    &_img{
+        background-color: blue;
+    }
+    
+    &__description {
+    
+    }
+}
