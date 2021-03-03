@@ -6,6 +6,40 @@ li {
   list-style: none;
 }
 
+header {
+  border-bottom: 1px solid #e6e6e6;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 5px 5px #e6e6e6;
+}
+header .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .header__title {
+  font-family: "Sofia";
+  font-size: 30px;
+}
+@media screen and (max-width: 599px) {
+  header .header__title {
+    text-align: center;
+  }
+}
+header .header__icon {
+  position: absolute;
+  right: 10%;
+}
+header .header__icon i {
+  margin: 0 5px;
+  font-size: 18px;
+  background: -webkit-linear-gradient(#d4813a, #8f5bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+}
+
 .footer {
   color: black;
   padding: 40px;
@@ -69,36 +103,6 @@ li {
   color: black;
 }
 
-header {
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.header__title {
-  font-family: "Sofia";
-  font-size: 30px;
-}
-@media screen and (max-width: 599px) {
-  .header__title {
-    text-align: center;
-  }
-}
-.header__icon {
-  position: absolute;
-  right: 10%;
-}
-.header__icon i {
-  margin: 0 5px;
-  font-size: 18px;
-  background: -webkit-linear-gradient(#d4813a, #8f5bfe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .cardContainer {
   display: flex;
   flex-wrap: wrap;
@@ -106,16 +110,33 @@ header {
   justify-content: space-around;
   padding: 50px;
   margin: auto;
+  width: 900px;
 }
 .cardContainer__card {
-  width: 400px;
-  height: 400px;
-  background-color: #e6e6e6;
+  width: 300px;
+  height: 300px;
   border-radius: 20px;
   margin: 30px;
 }
-.cardContainer_img {
-  background-color: blue;
+.cardContainer__img {
+  border: #e6e6e6 1px solid;
+  width: 300px;
+  height: 200px;
+}
+.cardContainer__description {
+  display: flex;
+  flex-direction: column;
+  background-color: #e6e6e6;
+  padding: 5px 10px;
+  font-family: "Poppins";
+}
+.cardContainer__description--title {
+  font-weight: bold;
+}
+.cardContainer__description--price {
+  font-weight: 200px;
+  font-size: 12px;
+  align-self: flex-end;
 }
 
 /*# sourceMappingURL=style.css.map */
