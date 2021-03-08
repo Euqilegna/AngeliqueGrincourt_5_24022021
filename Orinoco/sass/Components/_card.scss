@@ -96,50 +96,15 @@
 
         &--title {
         }
-        &--text {            
+        &--text {
             padding: 30px 0;
-            width: 30%;
         }
     }
 }
 
-.accordion {
-    border: #eee 1px solid;
-    background-color: white;
-    box-shadow: #eee 5px 5px 5px;
-    color: #444;
-    cursor: pointer;
-    padding: 10px 25px;
-    width: 100%;
-    text-align: left;
-    font-size: 15px;
-    border-radius: 20px;
-
+.form-control {
     &:focus {
-        outline: none;
+        border-color: #adadad !important;
+        box-shadow: none !important;
     }
-
-    &__panel {
-        display: none;
-        background-color: white;
-        overflow: hidden;
-        border-radius: 20px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        text-align: center;
-        border: #eee 1px solid;
-        padding: 10px 23px;
-        font-size: 15px;
-        p {
-            border-bottom: 1px solid black;
-            padding-bottom: 15px;
-        }
-    }
-}
-
-.active {
-    box-shadow: none;
-    border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
 }

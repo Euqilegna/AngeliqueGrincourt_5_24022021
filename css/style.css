@@ -6,6 +6,88 @@ li {
   list-style: none;
 }
 
+.containerShoppingCartPage {
+  display: flex;
+  justify-content: space-around;
+  padding: 100px 0;
+}
+
+.left {
+  width: 50%;
+}
+
+.containerCardShoppingCartPage {
+  background-color: #e6e6e666;
+  padding: 50px;
+  border-radius: 20px;
+}
+
+.right {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.test {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titleForm {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin: 20px;
+}
+
+.form-control {
+  margin: 5px;
+}
+
+.inputForm {
+  width: 48%;
+}
+.inputForm--cityCode {
+  width: 30%;
+}
+.inputForm--city {
+  width: 67%;
+}
+
+.formEnd {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.formEnd__saveInfo {
+  margin: 20px;
+}
+
+.btn {
+  background-color: #f3e9f1 !important;
+  border-radius: 20px !important;
+  width: 50%;
+  margin: auto;
+}
+
+.row1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.selectNumberOfProduct {
+  width: 40px !important;
+}
+
+.titleResume {
+  font-size: 25px;
+}
+
 .cardContainer {
   font-family: "Nunito";
   display: flex;
@@ -88,46 +170,11 @@ li {
 }
 .cardContainer__descriptionpOfProduct--text {
   padding: 30px 0;
-  width: 30%;
 }
 
-.accordion {
-  border: #eee 1px solid;
-  background-color: white;
-  box-shadow: #eee 5px 5px 5px;
-  color: #444;
-  cursor: pointer;
-  padding: 10px 25px;
-  width: 100%;
-  text-align: left;
-  font-size: 15px;
-  border-radius: 20px;
-}
-.accordion:focus {
-  outline: none;
-}
-.accordion__panel {
-  display: none;
-  background-color: white;
-  overflow: hidden;
-  border-radius: 20px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  text-align: center;
-  border: #eee 1px solid;
-  padding: 10px 23px;
-  font-size: 15px;
-}
-.accordion__panel p {
-  border-bottom: 1px solid black;
-  padding-bottom: 15px;
-}
-
-.active {
-  box-shadow: none;
-  border-bottom: none;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+.form-control:focus {
+  border-color: #adadad !important;
+  box-shadow: none !important;
 }
 
 header {
