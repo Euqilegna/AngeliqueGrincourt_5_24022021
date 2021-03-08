@@ -16,12 +16,13 @@
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <script src="api.js"></script>
+    <script src="/Orinoco/js/api.js"></script>
+    <script defer src="/Orinoco/js/accordion.js"></script>
     <script>
         //démarer API : node server.js 
         const api = new CameraApi()
@@ -50,40 +51,39 @@
     <main>
         <div class="container">
             <div class="cardContainer">
-                <div class="cardContainer__card">
-                    <div class="cardContainer__img"></div>
-                    <div class="cardContainer__description">
-                        <div class="cardContainer__description--title"> Caméra 1 </div>
-                        <div class="cardContainer__description--price"> 88 euros </div>
+                <div class="cardContainer__card--product">
+                    <div class="cardContainer__card--productLeftInfo">
+                        <div class="cardContainer__img--productImg"></div>
+                    </div>
+                    <div class="cardContainer__card--productRightInfo">
+                        <div class="cardContainer__description--productInfo">
+                            <span class="cardContainer__descriptionTitle--titlePageProduct"> Caméra 1 </span>
+                            <span class="cardContainer__descriptionPrice--PricePageProduct"> 88 euros </span>
+                            <div class="cardContainer__personnalisationpOfProduct">
+                                <span class="cardContainer__personnalisationpOfProduct--title"> Personnalisation :
+                                </span>
+                                <div class="cardContainer__personnalisationpOfProduct--list">
+                                    <button class="accordion">Personnalisation 1 </button>
+                                    <div class="accordion__panel">
+                                        <p> Personnalisation 2</p>
+                                        <p>Personnalisation 3</p>
+                                        <p>Personnalisation 4</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cardContainer__descriptionpOfProduct">
+                                <span class="cardContainer__descriptionpOfProduct--title"> Descritpion : </span>
+                                <div class="cardContainer__descriptionpOfProduct--text">
+                                    <p> LoremImpsumLoremImpsumLoremImpsumLoremImpsumLoremImpsumLoremImpsumLoremImpsum
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <!-- <div class="container">
-            <div class="cardProduct">
-                <div class="cardProduct__img"></div>
-                <div class="cardProduct__description">
-                    <div class="cardProduct__description--title"> Caméra 1 </div>
-                    <div class="cardProduct__description--description"> Lorem Ipsum </div>
-                    <div class="cardProduct__description--personalisation">
-                        <ul>
-                            <li>
-                                Prout 1
-                            </li>
-                            <li>
-                                Prout 1
-                            </li>
-                            <li>
-                                Prout 1
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="cardProduct__description--price"> 88 euros </div>
-
-                </div>
-            </div>
-        </div> -->
     <footer>
         <div class="footer footer--background">
             <div class="footer__containerBox">
@@ -129,3 +129,5 @@
             <p> Copyright © 2021 Orinoco - Mentions Légales</p>
         </div>
     </footer>
+</body>
+</html>
