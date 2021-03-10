@@ -1,0 +1,72 @@
+.containerShoppingCartPage {
+    display: flex;
+    justify-content: space-around;
+    padding: 100px 0;
+    &__left {
+        width: 50%;
+    }
+    &__right {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.containerCardShoppingCartPage {
+    background-color: #e6e6e666;
+    padding: 50px;
+    border-radius: 20px;
+
+    &__titleForm {
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    &__align {
+        display: flex;
+        justify-content: space-between;
+        border-top: #575757 1px solid;
+    }
+
+    &__rowInfo {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-group {
+    margin: 20px;
+}
+.form-control {
+    margin: 5px;
+}
+
+.inputForm {
+    width: 48%;
+    &--cityCode {
+        width: 30%;
+    }
+    &--city {
+        width: 67%;
+    }
+}
+
+.formEnd {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    &__saveInfo {
+        margin: 20px;
+    }
+}
+
+.selectNumberOfProduct {
+    width: 40px !important;
+}

@@ -21,25 +21,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <script src="api.js"></script>
-    <script>
-        //démarer API : node server.js 
-        const api = new CameraApi()
-        const loadData = async () => {
-            const productList = await api.getAll()
-            console.log(productList)
-        }
-        loadData()
-    </script>
-
-
+        <script src="/Orinoco/js/api.js"></script>
+        <script defer src="/Orinoco/js/home.js"></script>
 </head>
 
 <body>
     <header>
         <div class="container">
             <div class="header">
-                <div class="header__title"> Orinoco </div>
+                <a href="/Orinoco/html/home.html">
+                    <div class="header__title"> Orinoco </div>
+                </a>
                 <div class="header__icon">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
@@ -49,12 +41,12 @@
     <main>
         <div class="container">
             <div class="containerShoppingCartPage">
-                <div class="left">
+                <div class="containerShoppingCartPage__left">
                     <div class="containerCardShoppingCartPage">
-                        <span class="titleForm"> Adresse de livraison </span>
+                        <span class="containerCardShoppingCartPage__titleForm"> Adresse de livraison </span>
                         <div class="form-group">
 
-                            <div class="form-row test">
+                            <div class="form-row flex">
                                 <div class="inputForm">
                                     <input type="text" class="form-control" placeholder="Prénom">
                                 </div>
@@ -64,7 +56,7 @@
                             </div>
                             <input class="form-control" type="text" placeholder="Adresse">
                             <input class="form-control" type="text" placeholder="Complément">
-                            <div class="form-row test">
+                            <div class="form-row flex">
                                 <div class="inputForm--cityCode">
                                     <input type="text" class="form-control" placeholder="Code Postal">
                                 </div>
@@ -80,20 +72,21 @@
                                     <label class="form-check-label" for="exampleCheck1"> Sauvegarder mes informations
                                     </label>
                                 </div>
-                                <button type="button" class="btn"> Commander </button>
+                                <button type="button" class="btn btn__form"> Commander </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="right">
+                <div class="containerShoppingCartPage__right">
                     <div class="containerCardShoppingCartPage">
-                        <span class="titleForm"> Résumé de la commande </span>
-                        <div class="row1">
-                            <img>img</img>
-                            <span> Camera 1</span>
+                        <span class="containerCardShoppingCartPage__titleForm"> Résumé de la commande </span>
+                        <div class="containerCardShoppingCartPage__rowInfo">
+                            <span> img </span>
+                            <span> Camera 1 </span>
                             <span> Price </span>
                         </div>
+
                         <select class="form-control selectNumberOfProduct">
                             <option> 1 </option>
                             <option> 2 </option>
@@ -101,10 +94,14 @@
                             <option> 4 </option>
                             <option> 5 </option>
                         </select>
-                        <span>Total :</span>
+                        <div class="containerCardShoppingCartPage__align">
+                            <span>Total :</span>
+                            <span> 6.80</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         </div>
 

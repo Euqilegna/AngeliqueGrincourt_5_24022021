@@ -22,25 +22,20 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <script src="/Orinoco/js/api.js"></script>
-    <script defer src="/Orinoco/js/accordion.js"></script>
+    <script src="/Orinoco/js/home.js"></script>
+
     <script>
-        //démarer API : node server.js 
-        const api = new CameraApi()
-        const loadData = async () => {
-            const productId = localStorage.getItem('productId') //récupère l'id dans le localStorage 
-            const product = await api.getById(idProduct)
-            console.log(product)
-        }
-        loadData()
+        loadDataById()
     </script>
 </head>
-
 
 <body>
     <header>
         <div class="container">
             <div class="header">
-                <div class="header__title"> Orinoco </div>
+                <a href="/Orinoco/html/home.html">
+                    <div class="header__title"> Orinoco </div>
+                </a>
                 <div class="header__icon">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
@@ -50,40 +45,8 @@
 
     <main>
         <div class="container">
-            <div class="cardContainer">
-                <div class="cardContainer__card--product">
-                    <div class="cardContainer__card--productLeftInfo">
-                        <div class="cardContainer__img--productImg"></div>
-                    </div>
-                    <div class="cardContainer__card--productRightInfo">
-                        <div class="cardContainer__description--productInfo">
-                            <span class="cardContainer__descriptionTitle--titlePageProduct"> Caméra 1 </span>
-                            <span class="cardContainer__descriptionPrice--PricePageProduct"> 88 euros </span>
-                            <div class="cardContainer__personnalisationpOfProduct">
-                                <span class="cardContainer__personnalisationpOfProduct--title"> Personnalisation :
-                                </span>
-                                <div class="cardContainer__personnalisationpOfProduct--list">
-                                    <select class="form-control">
-                                        <option>Personnalisation 1</option>
-                                        <option>Personnalisation 2</option>
-                                        <option>Personnalisation 3</option>
-                                        <option>Personnalisation 4</option>
-                                        <option>Personnalisation 5</option>
-                                    </select>
-                                
-                            </div>
-                        </div>
-                        <div class="cardContainer__descriptionpOfProduct">
-                            <span class="cardContainer__descriptionpOfProduct--title"> Descritpion : </span>
-                            <div class="cardContainer__descriptionpOfProduct--text">
-                                <p> LoremImpsumLoremImpsumLoremImpsumLoremImpsumLoremImpsum LoremImpsumLoremImpsum
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id ="containerOfProduct" class="cardContainer">
             </div>
-        </div>
         </div>
     </main>
     <footer>

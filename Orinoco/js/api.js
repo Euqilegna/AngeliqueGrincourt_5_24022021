@@ -44,6 +44,7 @@ class CameraApi {
     //     "5be1ef211c9d44000030b062",
     //     "5be9bc241c9d440000a730e7"
     // ]
+    
     createOrder(contact, products) {
 
         const data = {
