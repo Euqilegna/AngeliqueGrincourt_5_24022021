@@ -27,17 +27,12 @@ const redirectToProductPage = (idProduct) => {
     document.location.href = "productPage.html";
 }
 
-const redirectToShoppingCartPage = (idProduct) => {
-    localStorage.setItem('productId', idProduct);
-    document.location.href = "shoppingCartPage.html";
-} 
-
 
 const loadDataById = async () => {
     const camera = await api.getById(localStorage.getItem("productId"))
-    
+
     let containerOfProduct =
-    `<div class="cardContainer__card--product">
+        `<div class="cardContainer__card--product">
         <div class="cardContainer__card--productLeftInfo">
             <img id="img" src="${camera.imageUrl}" class="cardContainer__img--productImg"> </img>
         </div>  
@@ -65,41 +60,76 @@ const loadDataById = async () => {
                     <p> ${camera.description} </p>
                 </div>
             </div>
-            <button class="cardContainer__buttonAddToShoppingCart" onclick="redirectToShoppingCartPage('${camera._id}')"> Ajouter au panier </button>
+            <button class="cardContainer__buttonAddToShoppingCart" onclick="addToShoppingCart('${camera._id}')"> Ajouter au panier </button>
         </div>
     </div>
 </div>`
     document.getElementById("containerOfProduct").innerHTML = containerOfProduct
 }
 
-const loadProut = async () => {
-    const camera = await api.getById(localStorage.getItem("productId"))
-    let resumeOfProduct = 
-    `   <div class="containerCardShoppingCartPage">
-            <span class="containerCardShoppingCartPage__titleForm"> Résumé de la commande </span>
-        <div class="containerCardShoppingCartPage__rowInfo">
-            <img id="img" class="containerCardShoppingCartPage__img" src="${camera.imageUrl}" class=""> </img>
-                <span> ${camera.name} </span>
-                <span> ${camera.price} </span>
-        </div>
 
-        <select class="form-control selectNumberOfProduct">
-            <option> 1 </option>
-            <option> 2 </option>
-            <option> 3 </option>
-            <option> 4 </option>
-            <option> 5 </option>
-        </select>
-        <div class="containerCardShoppingCartPage__align">
-            <span>Total :</span>
-            <span> 6.80</span>
-        </div>
-        </div>
-        `
-           
-    document.getElementById("resumeOfProduct").innerHTML = resumeOfProduct
+const addToShoppingCart = async (productId) => {
+    const product = await api.getById(productId)
+    const myShoppingCart = localStorage.myShoppingCart ? JSON.parse(localStorage.myShoppingCart) : []
+    const checkProduct = myShoppingCart.find(e => e._id === productId)
+    if (checkProduct) {
+        checkProduct.quantity++
+    } else {
+        product.quantity = 1
+        myShoppingCart.push(product)
+    }
+
+    localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
+    console.log('myShoppingCart', myShoppingCart)
+}
+
+const removeProduct = (productId) => {
+    console.log('================= removeProduct')
+    console.log('productId', productId)
+    // Récupérer le panier dans le local storage
+    const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
+    // Chercher le produit dans le tableau via le productId
+    const findIndex = myShoppingCart.findIndex(e => e._id === productId)
+    console.log('findIndex', findIndex)
+    // Si il existe, supprimer le produit du tableau (s'aider de la fonction findIndex et splice)
+    if (findIndex > -1) {
+        myShoppingCart.splice(findIndex, 1)
+    }
+    // Re-renseigner le nouveau panier dans le localStorage
+    localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
+    console.log('myShoppingCart', myShoppingCart)
 }
 
 
+const removeQtyProduct = (productId) => {
+    // Récupérer le panier dans le local storage
+    const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
+    // Chercher le produit dans le tableau via le productId
+    const findProduct = myShoppingCart.find(e => e._id === productId)
+    // Si il existe, retirer 1 de la quantité du produit (si quantity = 0 => supprimer le produit (appel fonction removeProduct))
+    if (findProduct && findProduct.quantity - 1 > 0) {
+        findProduct.quantity--
+        //  Re-renseigner le nouveau panier dans le localStorage
+        localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
+        console.log('myShoppingCart', myShoppingCart)
+    } else {
+        removeProduct(productId)
+    }
+}
+
+const removeShoppingCart = () => {
+    localStorage.removeItem('myShoppingCart')  
+}
+
+//location.reload() pour rafraîchir la page 
 
 
+// if / else
+if (true) { // Si ma condition est vraie
+
+} else { // Sinon
+
+}
+
+// Equivalent if / else
+console.log(true ? 'if' : 'else')
