@@ -37,7 +37,7 @@
                     <div class="header__title"> Orinoco </div>
                 </a>
                 <div class="header__icon">
-                    <i class="fas fa-shopping-cart"></i>
+                    <a href="shoppingCartPage.html"> <i class="fas fa-shopping-cart"></i> </a>
                 </div>
             </div>
         </div>
@@ -45,11 +45,21 @@
 
     <main>
         <div class="container">
-            <div id ="containerOfProduct" class="cardContainer">
+            <div id="containerOfProduct" class="cardContainer">
+            </div>
+        </div>
+        <div id="overlay" class="overlay">
+            <div id="popUp" class="popUp">
+                <div class="popUpContent"></div>
+                    <span> L'article à bien été ajouté à votre panier !  </span>
+                    <button id="returnToProductPage" class="btn btn__popUp" onclick="returnToProductPage()"> Continuer mes achats </button>
+                    <button type="button" id="goToShoppingCartPage" class="btn btn__popUp" onclick="goToShoppingCartPage()"> Voir mon panier </button> 
+                </div>
             </div>
         </div>
     </main>
     <footer>
+
         <div class="footer footer--background">
             <div class="footer__containerBox">
                 <div class="footer__box">

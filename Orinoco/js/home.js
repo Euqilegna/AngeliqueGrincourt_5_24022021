@@ -60,7 +60,7 @@ const loadDataById = async () => {
                     <p> ${camera.description} </p>
                 </div>
             </div>
-            <button class="cardContainer__buttonAddToShoppingCart" onclick="addToShoppingCart('${camera._id}')"> Ajouter au panier </button>
+            <button id="btnAddTo" class="cardContainer__buttonAddToShoppingCart" onclick="addToShoppingCart('${camera._id}')"> Ajouter au panier </button>
         </div>
     </div>
 </div>`
@@ -78,8 +78,13 @@ const addToShoppingCart = async (productId) => {
         product.quantity = 1
         myShoppingCart.push(product)
     }
+    console.log(checkProduct)
 
     localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
+
+    //affichage PopUp confirmation d'ajout 
+    let overlay = document.getElementById('overlay')
+    overlay.style.display = 'block';
     console.log('myShoppingCart', myShoppingCart)
 }
 
@@ -118,18 +123,67 @@ const removeQtyProduct = (productId) => {
 }
 
 const removeShoppingCart = () => {
-    localStorage.removeItem('myShoppingCart')  
+    localStorage.removeItem('myShoppingCart')
 }
 
 //location.reload() pour rafraîchir la page 
 
-
-// if / else
-if (true) { // Si ma condition est vraie
-
-} else { // Sinon
-
+//PopUp - retour à la page produit
+const returnToProductPage = () => {
+    document.location.href = "productPage.html";
 }
 
-// Equivalent if / else
-console.log(true ? 'if' : 'else')
+const goToShoppingCartPage = () => {
+    document.location.href = "shoppingCartPage.html"
+}
+
+
+const showCartContent = () => {
+    //     Etape 1 : Récupérer les articles de mon panier
+    const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
+    console.log('myShoppingCart', myShoppingCart)
+    // - Etape 2 : Afficher les articles
+    //  Si panier vide j'affiche "panier vide" // blocOfMyShoppingCart (avec "Panier Vide")
+    if (!myShoppingCart.length) {
+
+        let blocOfMyShoppingCart =
+            `
+            <div> 
+            <span> Le panier est vide. </span>
+            <span id="sumTotal"> Total : 0 euros </span> 
+            </div>
+            `
+
+        document.getElementById('products').innerHTML = blocOfMyShoppingCart
+
+    } else {
+
+        let sumTotal = 0
+
+        for (let product of myShoppingCart) {
+
+            let blocOfMyShoppingCart =
+                `
+                    <img id="img" class="containerCardShoppingCartPage__img" src="${product.imageUrl}" class="">
+                    </img>
+                    <span> ${product.name} </span>
+                     <span> ${product.price} </span>
+                `
+            document.getElementById('products').innerHTML = blocOfMyShoppingCart
+
+            let sumTotal = sumTotal += product.price * product.quantity 
+            
+            ` 
+              <span> Total : ${sumTotal} euros </span>
+              </div> 
+            `
+            document.getElementsById('sumTotal').innerHTML = sumTotal
+        }
+    }
+
+    // - Etape 4 : Afficher le prix total
+    // 	innerHtml SumTotal 
+   
+}
+
+

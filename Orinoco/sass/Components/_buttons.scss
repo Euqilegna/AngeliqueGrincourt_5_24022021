@@ -1,7 +1,15 @@
-.btn__form {
+.btn {
     background-color: #f3e9f1 !important;
     border-radius: 20px !important;
-    width: 50%;
     margin: auto;
     border: 1px solid #7c7c7c13 !important;
+
+    &__form{
+        width: 50%;
+    }
+    &__popUp{
+        width: 40%;
+        margin: 0;
+    }
 }
+

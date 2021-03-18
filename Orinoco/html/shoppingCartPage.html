@@ -23,7 +23,7 @@
 
     <script src="/Orinoco/js/api.js"></script>
     <script src="/Orinoco/js/home.js"></script>
-    <script> </script>
+    <script> showCartContent() </script>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
                     <div class="header__title"> Orinoco </div>
                 </a>
                 <div class="header__icon">
-                    <i class="fas fa-shopping-cart"></i>
+                    <a href="shoppingCartPage.html"> <i class="fas fa-shopping-cart"></i> </a>
                 </div>
             </div>
         </div>
@@ -82,20 +82,14 @@
                 <div id="resumeOfProduct" class="containerShoppingCartPage__right">
                     <div class="containerCardShoppingCartPage">
                         <span class="containerCardShoppingCartPage__titleForm"> Résumé de la commande </span>
-                        <div class="containerCardShoppingCartPage__rowInfo">
-                            <img id="img" class="containerCardShoppingCartPage__img" src="" class="">
-                            </img>
-                            <span>  </span>
-                            <span> </span>
+                        <div id="products" class="containerCardShoppingCartPage__rowInfo">
                         </div>
-                        <div class="containerCardShoppingCartPage__align">
-                            <span>Total :</span>
-                        
+                        <div id="sumTotal" class="containerCardShoppingCartPage__align">
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </main>
 
     <footer>

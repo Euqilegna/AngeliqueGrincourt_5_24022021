@@ -15,12 +15,18 @@ p {
   margin: 0 !important;
 }
 
-.btn__form {
+.btn {
   background-color: #f3e9f1 !important;
   border-radius: 20px !important;
-  width: 50%;
   margin: auto;
   border: 1px solid #7c7c7c13 !important;
+}
+.btn__form {
+  width: 50%;
+}
+.btn__popUp {
+  width: 40%;
+  margin: 0;
 }
 
 .cardContainer {
@@ -254,6 +260,31 @@ header .header__icon i {
   font-size: 80px;
   color: green;
   margin-bottom: 20px;
+}
+
+.overlay {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: none;
+}
+
+.popUp {
+  margin: 10% auto;
+  width: 40%;
+  background-color: #f3f3f3;
+  height: 239px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .containerShoppingCartPage {
