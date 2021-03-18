@@ -139,50 +139,56 @@ const goToShoppingCartPage = () => {
 
 
 const showCartContent = () => {
-    //     Etape 1 : Récupérer les articles de mon panier
-    const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
+
+    // Variables : 
+    // - Pour stocker le panier que récupère : const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
+    // - Pour stocker le block html que je vais créer a chaque article : let blocOfMyShoppingCart = ``
+    // - Pour stocker le montant total et l'initialisé a 0 : let SumTotal = 0
+
+    //     Etape 1 : Récupérer les articles de mon panier (verifie que myShoppingCart existe dans mon localStorage)
+    const myShoppingCart = localStorage.myShoppingCart ? JSON.parse(localStorage.myShoppingCart) : []
+    let blocOfMyShoppingCart = ''
     console.log('myShoppingCart', myShoppingCart)
     // - Etape 2 : Afficher les articles
     //  Si panier vide j'affiche "panier vide" // blocOfMyShoppingCart (avec "Panier Vide")
     if (!myShoppingCart.length) {
-
-        let blocOfMyShoppingCart =
+        blocOfMyShoppingCart =
             `
             <div> 
             <span> Le panier est vide. </span>
             <span id="sumTotal"> Total : 0 euros </span> 
             </div>
             `
-
         document.getElementById('products').innerHTML = blocOfMyShoppingCart
+    } else { //Sinon 
 
-    } else {
 
+        // SumTotal	
         let sumTotal = 0
 
+        // e créé une boucle qui va permettre de
         for (let product of myShoppingCart) {
 
-            let blocOfMyShoppingCart =
+            // Créer un nouveau bloc html pour chaque article blocOfMyShoppingCart  (avec les valeurs de mon panier)
+            blocOfMyShoppingCart +=
                 `
                     <img id="img" class="containerCardShoppingCartPage__img" src="${product.imageUrl}" class="">
                     </img>
                     <span> ${product.name} </span>
                      <span> ${product.price} </span>
                 `
-            document.getElementById('products').innerHTML = blocOfMyShoppingCart
-
-            let sumTotal = sumTotal += product.price * product.quantity 
+        
+            // 	- Ajouter au montant total chaque prix des articles multiplié par leur quantité dans le panier 
+            sumTotal += product.price * product.quantity 
             
-            ` 
-              <span> Total : ${sumTotal} euros </span>
-              </div> 
-            `
-            document.getElementsById('sumTotal').innerHTML = sumTotal
         }
+
+        document.getElementById('products').innerHTML = blocOfMyShoppingCart
+
+        // - Etape 4 : Afficher le prix total
+        document.getElementById('sumTotal').innerHTML =   `<div>  <span> Total : ${sumTotal} euros </span> </div> `
     }
 
-    // - Etape 4 : Afficher le prix total
-    // 	innerHtml SumTotal 
    
 }
 
