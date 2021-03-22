@@ -1,6 +1,10 @@
 //démarer API : node server.js 
+
+// Class Camera Api affecté dans une variable pour l'appeler de manière plus simple
+
 const api = new CameraApi()
 
+// Fonction qui récupère les données du serveur et les affiches. 
 
 const loadData = async () => {
     const productList = await api.getAll()
@@ -20,6 +24,7 @@ const loadData = async () => {
     document.getElementById("containerOfProductList").innerHTML = containerOfProductList
 }
 
+// Fonction qui recupère l'id du produit et redirige vers la page produit. 
 
 const redirectToProductPage = (idProduct) => {
     localStorage.setItem("productId", idProduct);
@@ -27,6 +32,7 @@ const redirectToProductPage = (idProduct) => {
     document.location.href = "productPage.html";
 }
 
+// Fonction qui récupère les données du serveur par leur ID 
 
 const loadDataById = async () => {
     const camera = await api.getById(localStorage.getItem("productId"))
@@ -67,6 +73,7 @@ const loadDataById = async () => {
     document.getElementById("containerOfProduct").innerHTML = containerOfProduct
 }
 
+// Fonction qui permet d'ajouter un produit dans le panier. Utilisation du Json.parse() et Json.stringify pour "traduire" les données reçus et envoyées
 
 const addToShoppingCart = async (productId) => {
     const product = await api.getById(productId)
@@ -78,15 +85,16 @@ const addToShoppingCart = async (productId) => {
         product.quantity = 1
         myShoppingCart.push(product)
     }
-    console.log(checkProduct)
 
     localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
 
-    //affichage PopUp confirmation d'ajout 
+    //Affichage PopUp confirmation d'ajout 
     let overlay = document.getElementById('overlay')
     overlay.style.display = 'block';
     console.log('myShoppingCart', myShoppingCart)
 }
+
+// Fonction qui permet de retirer complétement un produit du panier
 
 const removeProduct = (productId) => {
     console.log('================= removeProduct')
@@ -105,6 +113,7 @@ const removeProduct = (productId) => {
     console.log('myShoppingCart', myShoppingCart)
 }
 
+// Fonction pour retirer un produit d'une quantité 
 
 const removeQtyProduct = (productId) => {
     // Récupérer le panier dans le local storage
@@ -122,17 +131,19 @@ const removeQtyProduct = (productId) => {
     }
 }
 
+// Fonction pour retirer l'intégralité du panier 
+
 const removeShoppingCart = () => {
     localStorage.removeItem('myShoppingCart')
 }
 
-//location.reload() pour rafraîchir la page 
 
 //PopUp - retour à la page produit
 const returnToProductPage = () => {
     document.location.href = "productPage.html";
 }
 
+//PopUp - Aller au panier 
 const goToShoppingCartPage = () => {
     document.location.href = "shoppingCartPage.html"
 }
@@ -162,10 +173,6 @@ const showCartContent = () => {
         document.getElementById('products').innerHTML = blocOfMyShoppingCart
     } else { //Sinon 
 
-
-        // SumTotal	
-        let sumTotal = 0
-
         // e créé une boucle qui va permettre de
         for (let product of myShoppingCart) {
 
@@ -175,21 +182,73 @@ const showCartContent = () => {
                     <img id="img" class="containerCardShoppingCartPage__img" src="${product.imageUrl}" class="">
                     </img>
                     <span> ${product.name} </span>
-                     <span> ${product.price} </span>
+                    <select id="select-${product._id}" class="quantityOfProduct" name="quantityOfProduct">
+                    <option value="1" selected > 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                    <option value="4"> 4 </option>
+                    <option value="5"> 5 </option>
+                    <option value="6"> 6 </option>
+                    <option value="7"> 7 </option>
+                    <option value="8"> 8 </option>
+                    <option value="9"> 9 </option>
+                    <option value="10"> 10 </option>
+                    </select>
+                    <div id="totalProduct-${product._id}"> ${product.price * product.quantity} </div>   
                 `
-        
-            // 	- Ajouter au montant total chaque prix des articles multiplié par leur quantité dans le panier 
-            sumTotal += product.price * product.quantity 
-            
         }
 
         document.getElementById('products').innerHTML = blocOfMyShoppingCart
+        document.getElementById('sumTotal').innerHTML = `<div>  <span> Total : ${getCartTotalPrice()} euros </span> </div> `
 
-        // - Etape 4 : Afficher le prix total
-        document.getElementById('sumTotal').innerHTML =   `<div>  <span> Total : ${sumTotal} euros </span> </div> `
+        for (let product of myShoppingCart) {
+            const selectQuantity = document.getElementById(`select-${product._id}`)
+            const totalProduct = document.getElementById(`totalProduct-${product._id}`)
+            console.log(totalProduct)
+            // selectQuantity = tableau, -1 car index commence a 0
+            selectQuantity.selectedIndex = product.quantity - 1
+            selectQuantity.addEventListener('change', () => {
+                console.log('totalProduct', totalProduct, product)
+                setQtyProduct(product._id, selectQuantity.value)
+                totalProduct.innerHTML = `${getTotalProduct(product._id)} €`
+                const totalPriceOfCart = getCartTotalPrice()
+                console.log(totalPriceOfCart)
+                document.getElementById('sumTotal').innerHTML = `<div>  <span> Total : ${totalPriceOfCart} euros </span> </div> `
+            })
+        }
     }
-
-   
 }
 
+const getTotalProduct = (productId) => {
+    const myShoppingCart = localStorage.myShoppingCart ? JSON.parse(localStorage.myShoppingCart) : []
+    const findProduct = myShoppingCart.find(e => e._id === productId)
+    return findProduct.price * findProduct.quantity
+}
+
+const getCartTotalPrice = () => {
+    // Recuperer les articles de mon panier dans le localStorage + vérifie si mon panier existe 
+    const myShoppingCart = localStorage.myShoppingCart ? JSON.parse(localStorage.myShoppingCart) : []
+    // Si existe = Faire une boucle pour récuperer le prix et la quantité de mon article
+    let sumTotal = 0
+    for (let product of myShoppingCart) {
+        sumTotal += product.price * product.quantity
+    }
+    return sumTotal
+    // Ajouter au montant total chaque prix des articles multiplié par leur quantité dans le panier // SumTotal
+    // Retourne SumTotal 
+}
+
+const setQtyProduct = (productId, productQuantity) => {
+    // Récupérer le panier dans le local storage
+    const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
+    // Chercher le produit dans le tableau via le productId
+    const findProduct = myShoppingCart.find(e => e._id === productId)
+    // Si il existe, set la valeur productQuantity
+    findProduct.quantity = productQuantity
+    //  Re-renseigner le nouveau panier dans le localStorage
+    localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
+    console.log('myShoppingCart', myShoppingCart)
+}
+
+//location.reload() pour rafraîchir la page 
 

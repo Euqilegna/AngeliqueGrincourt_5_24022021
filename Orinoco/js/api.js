@@ -13,9 +13,15 @@ class CameraApi {
             method: 'GET',
         })
             .then(response => response.text())
-            .then(result => JSON.parse(result)) //JSON.parse() = transforme du text en JSON
+            .then(result => {
+                const data = JSON.parse(result)
+                //Divise le prix / 100 pour correspondre aux euros au lieu des centiments avec la fonction map()
+                data.map(e => e.price = e.price / 100)
+                return data
+            }) //JSON.parse() = transforme du text en JSON
             .catch(error => console.log('error', error));
 
+        console.log(result)
         return result
     }
 
@@ -25,7 +31,12 @@ class CameraApi {
             method: 'GET',
         })
             .then(response => response.text())
-            .then(result => JSON.parse(result)) //JSON.parse() = transforme du text en JSON
+            .then(result => {
+                const data = JSON.parse(result)
+                //Divise le prix / 100 pour correspondre aux euros au lieu des centiments avec la fonction map()
+                data.price = data.price / 100
+                return data
+            }) //JSON.parse() = transforme du text en JSON
             .catch(error => console.log('error', error));
 
         return result
@@ -44,7 +55,7 @@ class CameraApi {
     //     "5be1ef211c9d44000030b062",
     //     "5be9bc241c9d440000a730e7"
     // ]
-    
+
     createOrder(contact, products) {
 
         const data = {
