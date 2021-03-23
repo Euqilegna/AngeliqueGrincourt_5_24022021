@@ -22,7 +22,9 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <script src="/Orinoco/js/api.js"></script>
-    <script src="/Orinoco/js/home.js"></script>
+    <script src="/Orinoco/js/loadData.js"></script>
+    <script src="/Orinoco/js/redirection.js"></script>
+    <script src="/Orinoco/js/shoppingCart.js"></script>
 
     <script>
         loadDataById()
@@ -51,11 +53,13 @@
         <div id="overlay" class="overlay">
             <div id="popUp" class="popUp">
                 <div class="popUpContent"></div>
-                    <span> L'article à bien été ajouté à votre panier !  </span>
-                    <button id="returnToProductPage" class="btn btn__popUp" onclick="returnToProductPage()"> Continuer mes achats </button>
-                    <button type="button" id="goToShoppingCartPage" class="btn btn__popUp" onclick="goToShoppingCartPage()"> Voir mon panier </button> 
-                </div>
+                <span> L'article à bien été ajouté à votre panier ! </span>
+                <button id="returnToProductPage" class="btn btn__popUp" onclick="returnToHome()"> Continuer mes
+                    achats </button>
+                <button type="button" id="goToShoppingCartPage" class="btn btn__popUp" onclick="goToShoppingCartPage()">
+                    Voir mon panier </button>
             </div>
+        </div>
         </div>
     </main>
     <footer>

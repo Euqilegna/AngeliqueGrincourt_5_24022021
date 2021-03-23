@@ -1,4 +1,5 @@
 .containerShoppingCartPage {
+    font-family: "Montserrat";
     display: flex;
     justify-content: space-around;
     padding: 100px 0;
@@ -20,23 +21,89 @@
     &__titleForm {
         font-size: 25px;
         font-weight: 600;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        i {
+            font-size: 15px;
+            cursor: pointer;
+        }
     }
 
     &__align {
         display: flex;
         justify-content: space-between;
-        border-top: #575757 1px solid;
+        font-size: 17px;
     }
 
     &__rowInfo {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        padding: 20px;
+        padding: 30px 0;
     }
-    
-    &__img{
-        width: 40%;
+
+    &__product {
+        display: flex;
+        padding-bottom: 20px;
+        border-bottom: 1px solid grey;
+        margin-bottom: 30px;
+    }
+
+    &__colContent {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        width: 100%;
+        margin-left: 20px;
+
+        &--priceProduct {
+            position: absolute;
+            right: 15px;
+        }
+
+        &--nameOfProduct {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        &--descriptionOfProduct {
+            padding-top: 5px;
+            font-size: 14px;
+            font-weight: 400;
+            text-align: justify;
+        }
+
+        &--buttonRemoveProduct {
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .rowSelect {
+            display: flex;
+            width: 100%;
+            align-items: baseline;
+        }
+
+        select {
+            margin-top: 10px;
+            width: 23%;
+            border-radius: 20px;
+            padding-left: 9px;
+            padding-bottom: 2px;
+            outline: none;
+            border: 1px solid #d2d2d2;
+            box-shadow: 2px 2px 5px #d2d2d2;
+            font-size: 15px;
+        }
+    }
+
+    &__img {
+        width: 35%;
+        object-fit: cover;
     }
 }
 
@@ -74,4 +141,22 @@
 
 .selectNumberOfProduct {
     width: 40px !important;
+}
+
+.cartEmpty {
+    display: flex;
+    flex-direction: column;
+
+    &__content {
+        text-align: center;
+        font-size: 20px;
+        padding-bottom: 30px;
+    }
+
+    &__price {
+        border-top: 1px solid grey;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 5px;
+    }
 }

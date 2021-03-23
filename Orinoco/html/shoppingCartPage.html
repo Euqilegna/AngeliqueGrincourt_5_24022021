@@ -22,8 +22,9 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <script src="/Orinoco/js/api.js"></script>
-    <script src="/Orinoco/js/home.js"></script>
-
+    <script src="/Orinoco/js/loadData.js"></script>
+    <script src="/Orinoco/js/redirection.js"></script>
+    <script src="/Orinoco/js/shoppingCart.js"></script>
 </head>
 
 <body>
@@ -81,7 +82,7 @@
 
                 <div id="resumeOfProduct" class="containerShoppingCartPage__right">
                     <div class="containerCardShoppingCartPage">
-                        <span class="containerCardShoppingCartPage__titleForm"> Résumé de la commande </span>
+                        <div class="containerCardShoppingCartPage__titleForm"> Résumé de la commande <span onclick="removeShoppingCart()"><i class="fas fa-trash-alt"></i></span> </div>
                         <div id="products" class="containerCardShoppingCartPage__rowInfo">
                         </div>
                         <div id="sumTotal" class="containerCardShoppingCartPage__align">
@@ -138,4 +139,5 @@
         </div>
     </footer>
     <script type="text/javascript"> showCartContent() </script>
+
 </html>
