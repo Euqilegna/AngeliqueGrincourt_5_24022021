@@ -25,6 +25,7 @@
     <script src="/Orinoco/js/loadData.js"></script>
     <script src="/Orinoco/js/redirection.js"></script>
     <script src="/Orinoco/js/shoppingCart.js"></script>
+    <script src="/Orinoco/js/orderThank.js"></script>
 </head>
 
 <body>
@@ -47,11 +48,7 @@
             <div class="cardContainer">
                 <div class="cardContainer__card--orderThank">
                     <i class="fas fa-check-circle iconCheck"></i>
-                    <div class="">
-                        <p> Merci MrUntel pour votre commande ! </p>
-                        <p> Commande n°id </p>
-                        <p> Montant : 28 euros</p>
-                    </div>
+                    <div id="orderTicket"></div>
                 </div>
             </div>
         </div>
@@ -101,3 +98,6 @@
             <p> Copyright © 2021 Orinoco - Mentions Légales</p>
         </div>
     </footer>
+    <script type="text/javascript"> getCreatedOrder()</script>
+    </body>
+</html>

@@ -46,43 +46,35 @@
                 <div class="containerShoppingCartPage__left">
                     <div class="containerCardShoppingCartPage">
                         <span class="containerCardShoppingCartPage__titleForm"> Adresse de livraison </span>
-                        <div class="form-group">
-
-                            <div class="form-row flex">
-                                <div class="inputForm">
-                                    <input type="text" class="form-control" placeholder="Prénom">
+                        <form id="form" method="post">
+                            <div class="form-group">
+                                <div class="form-row flex">
+                                    <div class="inputForm">
+                                        <input id="firstName" type="text" class="form-control" placeholder="Prénom" >
+                                    </div>
+                                    <div class="inputForm">
+                                        <input id="lastName" type="text" class="form-control" placeholder="Nom">
+                                    </div>
                                 </div>
-                                <div class="inputForm">
-                                    <input type="text" class="form-control" placeholder="Nom">
+                                <input id="address" type="text" class="form-control" placeholder="Adresse">
+                                <div class="form-row flex">
+                                    <div class="inputForm--city">
+                                        <input id="city" type="text" class="form-control" placeholder="Ville">
+                                    </div>
+                                </div>
+                                <input id="email" class="form-control" type="email" placeholder="email">
+                                <div class="formEnd">
+                                    <button type="button" class="btn btn__form" onclick="createOrder()"> Commander </button>
                                 </div>
                             </div>
-                            <input class="form-control" type="text" placeholder="Adresse">
-                            <input class="form-control" type="text" placeholder="Complément">
-                            <div class="form-row flex">
-                                <div class="inputForm--cityCode">
-                                    <input type="text" class="form-control" placeholder="Code Postal">
-                                </div>
-                                <div class="inputForm--city">
-                                    <input type="text" class="form-control" placeholder="Ville">
-                                </div>
-                            </div>
-                            <input class="form-control" type="text" placeholder="Pays">
-                            <input class="form-control" type="number" placeholder="Téléphone">
-                            <div class="formEnd">
-                                <div class="formEnd__saveInfo">
-                                    <input type="checkbox" class="form-check-input">
-                                    <label class="form-check-label" for="exampleCheck1"> Sauvegarder mes informations
-                                    </label>
-                                </div>
-                                <button type="button" class="btn btn__form"> Commander </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
                 <div id="resumeOfProduct" class="containerShoppingCartPage__right">
                     <div class="containerCardShoppingCartPage">
-                        <div class="containerCardShoppingCartPage__titleForm"> Résumé de la commande <span onclick="removeShoppingCart()"><i class="fas fa-trash-alt"></i></span> </div>
+                        <div class="containerCardShoppingCartPage__titleForm"> Résumé de la commande <span
+                                onclick="removeShoppingCart()"><i class="fas fa-trash-alt"></i></span> </div>
                         <div id="products" class="containerCardShoppingCartPage__rowInfo">
                         </div>
                         <div id="sumTotal" class="containerCardShoppingCartPage__align">
@@ -138,6 +130,6 @@
             <p> Copyright © 2021 Orinoco - Mentions Légales</p>
         </div>
     </footer>
-    <script type="text/javascript"> showCartContent() </script>
-
+</body>
+    <script type="text/javascript"> showCartContent()</script>
 </html>

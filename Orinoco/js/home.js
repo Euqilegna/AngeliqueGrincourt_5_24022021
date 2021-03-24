@@ -1,5 +1,80 @@
+//démarer API : node server.js 
+
+// Class Camera Api affecté dans une variable pour l'appeler de manière plus simple
+
+const api = new CameraApi()
+
+// Fonction qui récupère les données du serveur et les affiches. 
+
+const loadData = async () => {
+    const productList = await api.getAll()
+    let containerOfProductList = ""
+    for (const product of productList) {
+        containerOfProductList += `
+        <div class="cardContainer__card" onClick="redirectToProductPage('${product._id}')">
+            <img id="img" src="${product.imageUrl}" class="cardContainer__img"></img>
+            <div id="description" class="cardContainer__description">
+                <div class="cardContainer__descriptionTitle">${product.name}</div>
+                <div class="cardContainer__descriptionPrice"><p>${product.price} euros</p></div>
+            </div>
+        </div>
+        `
+    }
+
+    document.getElementById("containerOfProductList").innerHTML = containerOfProductList
+}
+
+// Fonction qui recupère l'id du produit et redirige vers la page produit. 
+
+const redirectToProductPage = (idProduct) => {
+    localStorage.setItem("productId", idProduct);
+    // redirection vers la page produit
+    document.location.href = "productPage.html";
+}
+
+// Fonction qui récupère les données du serveur par leur ID 
+
+const loadDataById = async () => {
+    const camera = await api.getById(localStorage.getItem("productId"))
+
+    let containerOfProduct =
+        `<div class="cardContainer__card--product">
+        <div class="cardContainer__card--productLeftInfo">
+            <img id="img" src="${camera.imageUrl}" class="cardContainer__img--productImg"> </img>
+        </div>  
+    <div class="cardContainer__card--productRightInfo">
+        <div class="cardContainer__description--productInfo">
+            <span class="cardContainer__descriptionTitle--titlePageProduct"> ${camera.name} </span>
+            <span class="cardContainer__descriptionPrice--PricePageProduct"> ${camera.price} euros </span>
+            <div class="cardContainer__personnalisationpOfProduct">
+                <span class="cardContainer__personnalisationpOfProduct--title"> Personnalisation :
+                </span>
+                <div class="cardContainer__personnalisationpOfProduct--list">
+                    <select class="form-control">
+                        <option>Personnalisation 1</option>
+                        <option>Personnalisation 2</option>
+                        <option>Personnalisation 3</option>
+                        <option>Personnalisation 4</option>
+                        <option>Personnalisation 5</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="cardContainer__descriptionpOfProduct">
+                <span class="cardContainer__descriptionpOfProduct--title"> Descritpion : </span>
+                <div class="cardContainer__descriptionpOfProduct--text">
+                    <p> ${camera.description} </p>
+                </div>
+            </div>
+            <button id="btnAddTo" class="cardContainer__buttonAddToShoppingCart" onclick="addToShoppingCart('${camera._id}')"> Ajouter au panier </button>
+        </div>
+    </div>
+</div>`
+    document.getElementById("containerOfProduct").innerHTML = containerOfProduct
+}
 
 // Fonction qui permet d'ajouter un produit dans le panier. Utilisation du Json.parse() et Json.stringify pour "traduire" les données reçus et envoyées
+
 const addToShoppingCart = async (productId) => {
     const product = await api.getById(productId)
     const myShoppingCart = localStorage.myShoppingCart ? JSON.parse(localStorage.myShoppingCart) : []
@@ -16,48 +91,63 @@ const addToShoppingCart = async (productId) => {
     //Affichage PopUp confirmation d'ajout 
     let overlay = document.getElementById('overlay')
     overlay.style.display = 'block';
+    console.log('myShoppingCart', myShoppingCart)
 }
 
 // Fonction qui permet de retirer complétement un produit du panier
 
 const removeProduct = (productId) => {
+    console.log('================= removeProduct')
+    console.log('productId', productId)
     // Récupérer le panier dans le local storage
     const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
     // Chercher le produit dans le tableau via le productId
     const findIndex = myShoppingCart.findIndex(e => e._id === productId)
+    console.log('findIndex', findIndex)
     // Si il existe, supprimer le produit du tableau (s'aider de la fonction findIndex et splice)
     if (findIndex > -1) {
         myShoppingCart.splice(findIndex, 1)
     }
     // Re-renseigner le nouveau panier dans le localStorage
     localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
-    location.reload()
+    console.log('myShoppingCart', myShoppingCart)
 }
 
 // Fonction pour retirer un produit d'une quantité 
 
-// const removeQtyProduct = (productId) => {
-//     // Récupérer le panier dans le local storage
-//     const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
-//     // Chercher le produit dans le tableau via le productId
-//     const findProduct = myShoppingCart.find(e => e._id === productId)
-//     // Si il existe, retirer 1 de la quantité du produit (si quantity = 0 => supprimer le produit (appel fonction removeProduct))
-//     if (findProduct && findProduct.quantity - 1 > 0) {
-//         findProduct.quantity--
-//         //  Re-renseigner le nouveau panier dans le localStorage
-//         localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
-//         console.log('myShoppingCart', myShoppingCart)
-//     } else {
-//         removeProduct(productId)
-//     }
-// }
+const removeQtyProduct = (productId) => {
+    // Récupérer le panier dans le local storage
+    const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
+    // Chercher le produit dans le tableau via le productId
+    const findProduct = myShoppingCart.find(e => e._id === productId)
+    // Si il existe, retirer 1 de la quantité du produit (si quantity = 0 => supprimer le produit (appel fonction removeProduct))
+    if (findProduct && findProduct.quantity - 1 > 0) {
+        findProduct.quantity--
+        //  Re-renseigner le nouveau panier dans le localStorage
+        localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
+        console.log('myShoppingCart', myShoppingCart)
+    } else {
+        removeProduct(productId)
+    }
+}
 
 // Fonction pour retirer l'intégralité du panier 
 
 const removeShoppingCart = () => {
     localStorage.removeItem('myShoppingCart')
-    location.reload()
 }
+
+
+//PopUp - retour à la page produit
+const returnToProductPage = () => {
+    document.location.href = "productPage.html";
+}
+
+//PopUp - Aller au panier 
+const goToShoppingCartPage = () => {
+    document.location.href = "shoppingCartPage.html"
+}
+
 
 const showCartContent = () => {
 
@@ -69,33 +159,29 @@ const showCartContent = () => {
     //     Etape 1 : Récupérer les articles de mon panier (verifie que myShoppingCart existe dans mon localStorage)
     const myShoppingCart = localStorage.myShoppingCart ? JSON.parse(localStorage.myShoppingCart) : []
     let blocOfMyShoppingCart = ''
+    console.log('myShoppingCart', myShoppingCart)
     // - Etape 2 : Afficher les articles
     //  Si panier vide j'affiche "panier vide" // blocOfMyShoppingCart (avec "Panier Vide")
     if (!myShoppingCart.length) {
         blocOfMyShoppingCart =
             `
-            <div class="cartEmpty"> 
-            <span class="cartEmpty__content"> Le panier est vide. </span>
-            <div id="sumTotal" class="cartEmpty__price"><span> Total : </span> <span> 0 € </span> </div> 
+            <div> 
+            <span> Le panier est vide. </span>
+            <span id="sumTotal"> Total : 0 euros </span> 
             </div>
             `
         document.getElementById('products').innerHTML = blocOfMyShoppingCart
     } else { //Sinon 
 
         // e créé une boucle qui va permettre de
-        for (const product of myShoppingCart) {
+        for (let product of myShoppingCart) {
 
             // Créer un nouveau bloc html pour chaque article blocOfMyShoppingCart  (avec les valeurs de mon panier)
             blocOfMyShoppingCart +=
-                `<div class="containerCardShoppingCartPage__product"> 
-                    
-                    <img id="img" class="containerCardShoppingCartPage__img" src="${product.imageUrl}" class=""></img> 
-                    
-                    <div class="containerCardShoppingCartPage__colContent">
-                    
-                    <span class="containerCardShoppingCartPage__colContent--nameOfProduct"> ${product.name} </span>
-                    <span class="containerCardShoppingCartPage__colContent--descriptionOfProduct"> ${product.description} </span>
-                    <div class="rowSelect">
+                `
+                    <img id="img" class="containerCardShoppingCartPage__img" src="${product.imageUrl}" class="">
+                    </img>
+                    <span> ${product.name} </span>
                     <select id="select-${product._id}" class="quantityOfProduct" name="quantityOfProduct">
                     <option value="1" selected > 1 </option>
                     <option value="2"> 2 </option>
@@ -108,17 +194,12 @@ const showCartContent = () => {
                     <option value="9"> 9 </option>
                     <option value="10"> 10 </option>
                     </select>
-                    <div class="containerCardShoppingCartPage__colContent--buttonRemoveProduct"><span onclick="removeProduct('${product._id}')"> Supprimer </span></div>
-                    </div>
-                    <div id="totalProduct-${product._id}" class="containerCardShoppingCartPage__colContent--priceProduct"> ${product.price * product.quantity} € </div>  
-                    </div> 
-                    </div>
-                    
+                    <div id="totalProduct-${product._id}"> ${product.price * product.quantity} </div>   
                 `
         }
 
         document.getElementById('products').innerHTML = blocOfMyShoppingCart
-        document.getElementById('sumTotal').innerHTML = `<span> Total : </span> <span> ${getCartTotalPrice()} € </span>`
+        document.getElementById('sumTotal').innerHTML = `<div>  <span> Total : ${getCartTotalPrice()} euros </span> </div> `
 
         for (let product of myShoppingCart) {
             const selectQuantity = document.getElementById(`select-${product._id}`)
@@ -131,7 +212,8 @@ const showCartContent = () => {
                 setQtyProduct(product._id, selectQuantity.value)
                 totalProduct.innerHTML = `${getTotalProduct(product._id)} €`
                 const totalPriceOfCart = getCartTotalPrice()
-                document.getElementById('sumTotal').innerHTML = `<span> Total : </span> <span> ${totalPriceOfCart} € </span> `
+                console.log(totalPriceOfCart)
+                document.getElementById('sumTotal').innerHTML = `<div>  <span> Total : ${totalPriceOfCart} euros </span> </div> `
             })
         }
     }
@@ -165,38 +247,7 @@ const setQtyProduct = (productId, productQuantity) => {
     findProduct.quantity = productQuantity
     //  Re-renseigner le nouveau panier dans le localStorage
     localStorage.setItem('myShoppingCart', JSON.stringify(myShoppingCart))
-}
-
-
-
-// FORM 
-// Recupère les informations envoyées par l'utilisateur 
-const getUserData = () => {
-    const contact = {
-        "firstName": document.getElementById("firstName").value,
-        "lastName": document.getElementById("lastName").value,
-        "address": document.getElementById("address").value,
-        "city": document.getElementById("city").value,
-        "email": document.getElementById("email").value
-    }
-    return contact
-}
-
-
-const createOrder = async () => {
-    const api = new CameraApi()
-    const contact = getUserData()
-    const products = []
-    const myShoppingCart = JSON.parse(localStorage.myShoppingCart)
-    for (const product of myShoppingCart) {
-        for (let i = 0; i < product.quantity; i++) {
-            products.push(product._id)
-        }
-    }
-    const result = await api.createOrder(contact, products)
-    localStorage.setItem('createdOrder', JSON.stringify(result))
-    document.location.href = "orderThankPage.html"
-    return result
+    console.log('myShoppingCart', myShoppingCart)
 }
 
 

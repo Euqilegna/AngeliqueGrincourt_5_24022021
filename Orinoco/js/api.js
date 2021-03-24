@@ -45,7 +45,7 @@ class CameraApi {
             "contact": contact,
             "products": products
         }
-
+        console.log(data)
         const result = fetch(`${this.apiUrl}/order`, {  //fetch méthode qui fait un appel au serveur 
             method: 'POST',
             body: JSON.stringify(data),
@@ -56,7 +56,7 @@ class CameraApi {
             .then(response => response.text())
             .then(result => JSON.parse(result)) //JSON.parse() = transforme du text en JSON
             .catch(error => console.log('error', error));
-
+        
         return result
     }
 }
