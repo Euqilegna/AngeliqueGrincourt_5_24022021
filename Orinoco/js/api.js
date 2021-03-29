@@ -12,7 +12,7 @@ class CameraApi {
             .then(response => response.text())
             .then(result => {
                 const data = JSON.parse(result)
-                //Divise le prix / 100 pour correspondre aux euros au lieu des centiments avec la fonction map()
+                //Divise le prix / 100 pour correspondre aux euros au lieu des centimes avec la fonction map()
                 data.map(e => e.price = e.price / 100)
                 return data
             }) //JSON.parse() = transforme du text en JSON
@@ -30,7 +30,7 @@ class CameraApi {
             .then(response => response.text())
             .then(result => {
                 const data = JSON.parse(result)
-                //Divise le prix / 100 pour correspondre aux euros au lieu des centiments avec la fonction map()
+                //Divise le prix / 100 pour correspondre aux euros au lieu des centimes avec la fonction map()
                 data.price = data.price / 100
                 return data
             }) //JSON.parse() = transforme du text en JSON

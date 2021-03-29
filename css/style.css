@@ -32,6 +32,11 @@ body {
   width: 40%;
   margin: 0;
 }
+@media screen and (max-width: 599px) {
+  .btn {
+    width: 50%;
+  }
+}
 
 .cardContainer {
   font-family: "Montserrat";
@@ -42,10 +47,21 @@ body {
   padding: 85px 50px;
   margin: auto;
 }
+@media screen and (max-width: 599px) {
+  .cardContainer {
+    padding: 80px 20px;
+  }
+}
 .cardContainer__card {
   width: 400px;
   height: 400px;
   margin: 50px;
+}
+@media screen and (max-width: 599px) {
+  .cardContainer__card {
+    width: 400px;
+    margin: 20px 0px;
+  }
 }
 .cardContainer__card--product {
   display: flex;
@@ -54,6 +70,14 @@ body {
   height: 500px;
   background-color: #e6e6e647;
   border-radius: 20px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 599px) {
+  .cardContainer__card--product {
+    width: 100%;
+    margin: 0;
+    display: block;
+  }
 }
 .cardContainer__card--productLeftInfo {
   width: 50%;
@@ -61,11 +85,21 @@ body {
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 599px) {
+  .cardContainer__card--productLeftInfo {
+    width: 100%;
+  }
+}
 .cardContainer__card--productRightInfo {
   width: 50%;
   display: flex;
   justify-content: center;
   position: relative;
+}
+@media screen and (max-width: 599px) {
+  .cardContainer__card--productRightInfo {
+    width: 100%;
+  }
 }
 .cardContainer__card--orderThank {
   background-color: #adadad26;
@@ -90,7 +124,7 @@ body {
   cursor: pointer;
 }
 .cardContainer__img--productImg {
-  width: 90%;
+  width: 100%;
   border-radius: 20px;
 }
 .cardContainer__description {
@@ -102,6 +136,13 @@ body {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
+@media screen and (max-width: 599px) {
+  .cardContainer__description {
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 22px;
+  }
+}
 .cardContainer__description--productInfo {
   height: 413px;
   position: absolute;
@@ -110,6 +151,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+@media screen and (max-width: 599px) {
+  .cardContainer__description--productInfo {
+    position: unset;
+    top: 0;
+    justify-content: space-between;
+  }
 }
 .cardContainer__descriptionTitle {
   font-weight: bold;
@@ -132,9 +180,22 @@ body {
   align-items: baseline;
   border-bottom: #adadad 1px solid;
 }
+@media screen and (max-width: 599px) {
+  .cardContainer__personnalisationpOfProduct {
+    display: block;
+    margin: 0;
+  }
+}
 .cardContainer__personnalisationpOfProduct--list {
   margin-left: 50px;
   margin-bottom: 10px;
+}
+@media screen and (max-width: 599px) {
+  .cardContainer__personnalisationpOfProduct--list {
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+  }
 }
 .cardContainer__descriptionpOfProduct {
   display: flex;
@@ -151,16 +212,27 @@ body {
   padding: 15px 10px;
   border-radius: 20px;
   align-self: center;
-  font-weight: 800;
+  font-weight: 700;
   border: none;
 }
 .cardContainer__buttonAddToShoppingCart:focus {
   outline: none;
 }
+@media screen and (max-width: 599px) {
+  .cardContainer__buttonAddToShoppingCart {
+    width: 100%;
+  }
+}
 
 .form-control:focus {
   border-color: #adadad !important;
   box-shadow: none !important;
+}
+
+@media screen and (max-width: 599px) {
+  select {
+    font-size: 13px !important;
+  }
 }
 
 header {
@@ -292,6 +364,11 @@ header .header__icon i {
   align-items: center;
   justify-content: space-evenly;
 }
+@media screen and (max-width: 599px) {
+  .popUp {
+    width: 90%;
+  }
+}
 
 .containerShoppingCartPage {
   font-family: "Montserrat";
@@ -299,19 +376,39 @@ header .header__icon i {
   justify-content: space-around;
   padding: 100px 0;
 }
+@media screen and (max-width: 599px) {
+  .containerShoppingCartPage {
+    display: block;
+  }
+}
 .containerShoppingCartPage__left {
   width: 50%;
+}
+@media screen and (max-width: 599px) {
+  .containerShoppingCartPage__left {
+    width: 100%;
+  }
 }
 .containerShoppingCartPage__right {
   width: 40%;
   display: flex;
   flex-direction: column;
 }
+@media screen and (max-width: 599px) {
+  .containerShoppingCartPage__right {
+    width: 100%;
+  }
+}
 
 .containerCardShoppingCartPage {
   background-color: #e6e6e666;
   padding: 50px;
   border-radius: 20px;
+}
+@media screen and (max-width: 599px) {
+  .containerCardShoppingCartPage {
+    padding: 20px;
+  }
 }
 .containerCardShoppingCartPage__titleForm {
   font-size: 25px;

@@ -6,11 +6,18 @@
     justify-content: space-around;
     padding: 85px 50px;
     margin: auto;
+    @include mobile-only{
+        padding: 80px 20px;
+    }
 
     &__card {
         width: 400px;
         height: 400px;
         margin: 50px;
+        @include mobile-only {
+            width: 400px;
+            margin: 20px 0px;
+        }
 
         &--product {
             display: flex;
@@ -19,6 +26,12 @@
             height: 500px;
             background-color: #e6e6e647;
             border-radius: 20px;
+            flex-wrap: wrap;
+            @include mobile-only {
+                width: 100%;
+                margin: 0;
+                display: block;
+            }
         }
 
         &--productLeftInfo {
@@ -26,6 +39,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
+            @include mobile-only {
+                width: 100%;
+            }
         }
 
         &--productRightInfo {
@@ -33,6 +50,9 @@
             display: flex;
             justify-content: center;
             position: relative;
+            @include mobile-only {
+                width: 100%;
+            }
         }
 
         &--orderThank {
@@ -60,7 +80,7 @@
         cursor: pointer;
 
         &--productImg {
-            width: 90%;
+            width: 100%;
             border-radius: 20px;
         }
     }
@@ -73,6 +93,11 @@
         font-family: "Montserrat";
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
+        @include mobile-only {
+            text-align: center;
+            flex-wrap: wrap;
+            padding: 22px;
+        }
 
         &--productInfo {
             height: 413px;
@@ -82,8 +107,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
+            @include mobile-only{
+                position: unset;
+                top: 0;
+                justify-content: space-between;
+            }
         }
-        
     }
 
     &__descriptionTitle {
@@ -110,12 +139,19 @@
         flex-direction: row;
         align-items: baseline;
         border-bottom: #adadad 1px solid;
-
-        &--title {
+        @include mobile-only {
+            display: block;
+            margin: 0;
         }
+
         &--list {
             margin-left: 50px;
             margin-bottom: 10px;
+            @include mobile-only {
+                margin-left: 0;
+                display: flex;
+                align-items: center;
+            }
         }
     }
 
@@ -140,8 +176,11 @@
         align-self: center;
         font-weight: 700;
         border: none;
-        &:focus{
+        &:focus {
             outline: none;
+        }
+        @include mobile-only{
+            width: 100%;
         }
     }
 }
@@ -150,5 +189,11 @@
     &:focus {
         border-color: #adadad !important;
         box-shadow: none !important;
+    }
+}
+
+select {
+    @include mobile-only {
+        font-size: 13px !important;
     }
 }

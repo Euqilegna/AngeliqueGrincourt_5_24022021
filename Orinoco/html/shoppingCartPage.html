@@ -22,9 +22,11 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <script src="/Orinoco/js/api.js"></script>
-    <script src="/Orinoco/js/loadData.js"></script>
+    <script src="/Orinoco/js/home.js"></script>
+    <script src="/Orinoco/js/productPage.js"></script>
     <script src="/Orinoco/js/redirection.js"></script>
-    <script src="/Orinoco/js/shoppingCart.js"></script>
+    <script src="/Orinoco/js/shoppingCartInteraction.js"></script>
+    <script src="/Orinoco/js/shoppingCartPage.js"></script>
 </head>
 
 <body>
@@ -50,7 +52,7 @@
                             <div class="form-group">
                                 <div class="form-row flex">
                                     <div class="inputForm">
-                                        <input id="firstName" type="text" class="form-control" placeholder="Prénom" >
+                                        <input id="firstName" type="text" class="form-control" placeholder="Prénom">
                                     </div>
                                     <div class="inputForm">
                                         <input id="lastName" type="text" class="form-control" placeholder="Nom">
@@ -62,7 +64,7 @@
                                         <input id="city" type="text" class="form-control" placeholder="Ville">
                                     </div>
                                 </div>
-                                <input id="email" class="form-control" type="email" placeholder="email">
+                                <input id="email" class="form-control" type="email" placeholder="Email">
                                 <div class="formEnd">
                                     <button type="button" class="btn btn__form" onclick="createOrder()"> Commander </button>
                                 </div>

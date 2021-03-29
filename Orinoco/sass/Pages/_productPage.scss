@@ -22,6 +22,9 @@
     text-align: center;
     align-items: center;
     justify-content: space-evenly;
+    @include mobile-only{
+        width: 90%;
+    }
 }
 
 
