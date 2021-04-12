@@ -49,27 +49,27 @@
                     <div class="containerCardShoppingCartPage">
                         <span class="containerCardShoppingCartPage__titleForm"> Adresse de livraison </span>
                         <div id="form-error"></div>
-                        <form id="form" >
+                        <form id="form" onsubmit="return beforeCreateOrder(event)" >
                             <div class="form-group">
                                 <div class="form-row flex">
                                     <div class="inputForm">
                                         <div id="errFirstName">
-                                        <input id="firstName" type="text" class="form-control" pattern="[a-zA-Z]+" placeholder="Prénom" required>
+                                        <input id="firstName" type="text" class="form-control"  name="firstName" placeholder="Prénom" required>
                                         </div>
                                     </div>
                                     <div class="inputForm">
-                                        <input id="lastName" type="text" class="form-control" pattern="[a-zA-Z]+" placeholder="Nom" required>
+                                        <input id="lastName" type="text" class="form-control" placeholder="Nom" required>
                                     </div>
                                 </div>
-                                <input id="address" type="text" class="form-control" pattern="[a-zA-Z0-9]+" placeholder="Adresse" required>
+                                <input id="address" type="text" class="form-control"  placeholder="Adresse" required>
                                 <div class="form-row flex">
                                     <div class="inputForm--city">
-                                        <input id="city" type="text" class="form-control" pattern="[a-zA-Z]+" placeholder="Ville" required>
+                                        <input id="city" type="text" class="form-control" placeholder="Ville" required>
                                     </div>
                                 </div>
                                 <input id="email" class="form-control" type="email" placeholder="Email" required>
                                 <div class="formEnd">
-                                    <button id="Submit" type="button" class="btn btn__form" onclick="beforeCreateOrder()"> Commander </button>
+                                    <button id="Submit" type="submit" class="btn btn__form"> Commander </button>
                                 </div>
                             </div>
                         </form>

@@ -79,57 +79,54 @@ const showCartContent = () => {
     }
 }
 
-const beforeCreateOrder = () => {
+const beforeCreateOrder = (e) => {
+	console.log(e)
+	e.preventDefault()
     document.getElementById('form-error').innerHTML = ""
     const contact = getUserData();
     const errors = []
     console.log('contact', contact)
+    const alphaRegExp = /^[A-Za-zàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/
 
-    if(contact.lastName === "") {
-        errors.push('Veuillez remplir votre Nom')
-        const err = document.getElementById("lastName")
-        err.classList.add('error')
-    } else {
-        const err = document.getElementById("lastName")
-        err.classList.add('good')
+    document.getElementById('firstName').classList.remove('good', 'error')
+    document.getElementById('lastName').classList.remove('good', 'error')
+    document.getElementById('address').classList.remove('good', 'error')
+    document.getElementById('city').classList.remove('good', 'error')
+    document.getElementById('email').classList.remove('good', 'error')
+
+    // Test firstName
+    let firstNameValid = true
+    if(!alphaRegExp.test(contact.firstName)) {
+        errors.push('Le prénom doit uniquement contenir des lettres')
+        firstNameValid = false
     }
+    document.getElementById('firstName').classList.add(firstNameValid ? 'good': 'error')
+
+    // Test lastname
+    let lastNameValid = true
+    if(!alphaRegExp.test(contact.lastName)) {
+        errors.push('Le nom doit uniquement contenir des lettres')
+        lastNameValid = false
+    }
+    document.getElementById('lastName').classList.add(lastNameValid ? 'good': 'error')
     
-    if(contact.firstName === "") {
-        errors.push('Veuillez remplir votre prénom')
-        const err = document.getElementById("firstName")
-        err.classList.add('error')
-    } else {
-        const err = document.getElementById("firstName")
-        err.classList.add('good')
+    // Test city
+    let cityValid = true
+    if(!alphaRegExp.test(contact.city)) {
+        errors.push('La ville doit uniquement contenir des lettres')
+		cityValid = false
     }
+    document.getElementById('city').classList.add(cityValid ? 'good': 'error')
+    
 
-    if(contact.address === "") {
-        errors.push('Veuillez remplir votre adresse')
-        const err = document.getElementById("address")
-        err.classList.add('error')
-    } else {
-        const err = document.getElementById("address")
-        err.classList.add('good')
-    }
+    // Test address
+    let addressValid = true
+    document.getElementById('address').classList.add(addressValid ? 'good': 'error')
 
-    if(contact.city === "") {
-        errors.push('Veuillez remplir votre ville')
-        const err = document.getElementById("city")
-        err.classList.add('error')
-    } else {
-        const err = document.getElementById("city")
-        err.classList.add('good')
-    }
 
-    if(contact.email === "") {
-        errors.push('Veuillez remplir votre mail')
-        const err = document.getElementById("email")
-        err.classList.add('error')
-    } else {
-        const err = document.getElementById("email")
-        err.classList.add('good')
-    }
-
+    // Test email
+    let emailValid= true
+    document.getElementById('email').classList.add(emailValid ? 'good': 'error')
 
     if(!errors.length) {
         createOrder()
@@ -138,10 +135,6 @@ const beforeCreateOrder = () => {
         for(const error of errors) {
             htmlError += `${error} <br/>`
         }
-
         document.getElementById('form-error').innerHTML = htmlError
     }
 }
-
-
-const form = document.getElementById('form')
