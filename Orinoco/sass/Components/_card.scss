@@ -93,6 +93,8 @@
         font-family: "Montserrat";
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
+        cursor: pointer;
+
         @include mobile-only {
             text-align: center;
             flex-wrap: wrap;
@@ -160,8 +162,6 @@
         flex-direction: column;
         border-bottom: #adadad 1px solid;
 
-        &--title {
-        }
         &--text {
             padding: 13px 0;
         }

@@ -164,6 +164,16 @@
         text-align: center;
         font-size: 20px;
         padding-bottom: 30px;
+        &--btnReturnToHome{
+            background-color: #e6e6e6;
+            width: 65%;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            cursor: pointer;
+        }
     }
 
     &__price {
@@ -172,4 +182,13 @@
         justify-content: space-between;
         padding-top: 5px;
     }
+}
+
+
+.error{
+    border: 1px solid red !important;
+}
+
+.good { 
+    border: 1px solid green !important;
 }

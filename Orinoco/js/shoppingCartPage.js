@@ -15,13 +15,16 @@ const showCartContent = () => {
             `
             <div class="cartEmpty"> 
             <span class="cartEmpty__content"> Le panier est vide. </span>
+            <span class="cartEmpty__content--btnReturnToHome" onclick="returnToHome()"> Je commence mon shopping  </span>
             <div id="sumTotal" class="cartEmpty__price"><span> Total : </span> <span> 0 € </span> </div> 
             </div>
             `
         document.getElementById('products').innerHTML = blocOfMyShoppingCart
+        document.getElementById("Submit").disabled = true
+
     } else { //Sinon 
 
-        // e créé une boucle qui va permettre de
+        // Je créé une boucle qui va permettre de
         for (const product of myShoppingCart) {
 
             // Créer un nouveau bloc html pour chaque article blocOfMyShoppingCart  (avec les valeurs de mon panier)
@@ -75,3 +78,70 @@ const showCartContent = () => {
         }
     }
 }
+
+const beforeCreateOrder = () => {
+    document.getElementById('form-error').innerHTML = ""
+    const contact = getUserData();
+    const errors = []
+    console.log('contact', contact)
+
+    if(contact.lastName === "") {
+        errors.push('Veuillez remplir votre Nom')
+        const err = document.getElementById("lastName")
+        err.classList.add('error')
+    } else {
+        const err = document.getElementById("lastName")
+        err.classList.add('good')
+    }
+    
+    if(contact.firstName === "") {
+        errors.push('Veuillez remplir votre prénom')
+        const err = document.getElementById("firstName")
+        err.classList.add('error')
+    } else {
+        const err = document.getElementById("firstName")
+        err.classList.add('good')
+    }
+
+    if(contact.address === "") {
+        errors.push('Veuillez remplir votre adresse')
+        const err = document.getElementById("address")
+        err.classList.add('error')
+    } else {
+        const err = document.getElementById("address")
+        err.classList.add('good')
+    }
+
+    if(contact.city === "") {
+        errors.push('Veuillez remplir votre ville')
+        const err = document.getElementById("city")
+        err.classList.add('error')
+    } else {
+        const err = document.getElementById("city")
+        err.classList.add('good')
+    }
+
+    if(contact.email === "") {
+        errors.push('Veuillez remplir votre mail')
+        const err = document.getElementById("email")
+        err.classList.add('error')
+    } else {
+        const err = document.getElementById("email")
+        err.classList.add('good')
+    }
+
+
+    if(!errors.length) {
+        createOrder()
+    } else {
+        let htmlError = ''
+        for(const error of errors) {
+            htmlError += `${error} <br/>`
+        }
+
+        document.getElementById('form-error').innerHTML = htmlError
+    }
+}
+
+
+const form = document.getElementById('form')
