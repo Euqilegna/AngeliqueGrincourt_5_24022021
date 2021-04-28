@@ -38,6 +38,18 @@ body {
   }
 }
 
+.btnReturnToHome {
+  background-color: #f3e9f1;
+  width: 65%;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
 .cardContainer {
   font-family: "Montserrat";
   display: flex;
@@ -135,6 +147,7 @@ body {
   font-family: "Montserrat";
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  cursor: pointer;
 }
 @media screen and (max-width: 599px) {
   .cardContainer__description {
@@ -537,6 +550,14 @@ header .header__icon i {
   display: flex;
   justify-content: space-between;
   padding-top: 5px;
+}
+
+.error {
+  border: 1px solid red !important;
+}
+
+.good {
+  border: 1px solid green !important;
 }
 
 /*# sourceMappingURL=style.css.map */

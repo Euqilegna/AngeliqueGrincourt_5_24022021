@@ -15,7 +15,7 @@ const showCartContent = () => {
             `
             <div class="cartEmpty"> 
             <span class="cartEmpty__content"> Le panier est vide. </span>
-            <span class="cartEmpty__content--btnReturnToHome" onclick="returnToHome()"> Je commence mon shopping  </span>
+            <span class="cartEmpty__content btnReturnToHome" onclick="returnToHome()"> Je commence mon shopping  </span>
             <div id="sumTotal" class="cartEmpty__price"><span> Total : </span> <span> 0 € </span> </div> 
             </div>
             `
